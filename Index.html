@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berry Fruit Ads</title>
+</head>
+<body>
+    <h1>Fresh Berry Ads!</h1>
+    <div id="spotlight-note">Click the button to spotlight a berry.</div>
+    <button onclick="spotlightBerry()">Spotlight a Berry</button>
+
+    <div id="berry-container">
+    <section>
+        <h2>Strawberries</h2>
+        <p>Strawberries are the most popular berry worldwide and contain more vitamin C than oranges.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/strawberry', '_blank')">Strawberry Information</button>
+    </section>
+
+    <section>
+        <h2>Blueberries</h2>
+        <p>Blueberries have one of the highest antioxidant capacities and may help protect against urinary tract infections.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/blueberry-plant', '_blank')">Blueberry Information</button>
+    </section>
+
+    <section>
+        <h2>Raspberries</h2>
+        <p>Raspberries come in red, black, and golden varieties, and they are rich in fiber and vitamins.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/raspberry', '_blank')">Raspberry Information</button>
+    </section>
+
+    <section>
+        <h2>Blackberries</h2>
+        <p>Blackberries are actually aggregates of small drupes and are full of antioxidants.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/blackberry-fruit', '_blank')">Blackberry Information</button>
+    </section>
+
+    <section>
+        <h2>Cranberries</h2>
+        <p>Cranberries can bounce like rubber balls when fresh and are known for supporting urinary tract health.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/cranberry', '_blank')">Cranberry Information</button>
+    </section>
+
+    <section>
+        <h2>Gooseberries</h2>
+        <p>Gooseberries have a tart flavor and are rich in vitamin C and dietary fiber.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/gooseberry', '_blank')">Gooseberry Information</button>
+    </section>
+
+    <section>
+        <h2>Elderberries</h2>
+        <p>Elderberries are used in traditional medicine and can help support immune health.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/elderberry', '_blank')">Elderberry Information</button>
+    </section>
+
+    <section>
+        <h2>Boysenberries</h2>
+        <p>Boysenberries are a cross between blackberries and raspberries, with a sweet-tart flavor.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/boysenberry', '_blank')">Boysenberry Information</button>
+    </section>
+
+    <section>
+        <h2>Acai Berries</h2>
+        <p>Acai berries are native to the Amazon rainforest and are celebrated for their antioxidant power.</p>
+        <button onclick="window.open('https://www.britannica.com/plant/acai-palm', '_blank')">Acai Berry Information</button>
+    </section>
+    </div>
+
+    <footer>
+        <h5>Educational Disclaimer</h5>
+        <h4>Owned by: Justine D. Muaje</h4>
+        <p>This page is educational purposes only and is not affiliated with any berry producers or brands.</p>
+
+    <pre>
+    Name: Justine Muaje
+    Contact number: 09568294867
+    Facebook:<a href="https://web.facebook.com/justine.muajecabrera">Justine Dela Cruz Muaje</a>
+    Email:<a href="mailto:justinecab0809@gmail.com"> justinecab0809@gmail.com</a>
+    </pre>
+
+    </footer>
+
+        <style>
+        body { font-family: Arial, sans-serif;
+            text-align: center; margin: 0; min-height: 100vh;
+            background: linear-gradient(to bottom, #f06969, #b149e6);
+            color: #fff;
+         }
+
+        #spotlight-note { font-size: 18px; 
+            margin: 20px; 
+            color: #fff; 
+            font-weight: bold; }
+
+        button { padding: 10px 20px; 
+            font-size: 16px; 
+            margin-bottom: 30px; 
+            background-color: #6a2d6e;}
+        a { color: #cc0000; text-decoration: none; }
+        a:hover { color: #ffdd00; text-decoration: underline; }
+        #berry-container { display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; 
+            margin: 30px auto; 
+            max-width: 1200px; 
+            }
+
+
+        section { border: 1px solid #ddd; padding: 18px; border-radius: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease; background: rgba(255,255,255,0.95); color: #000; }
+        section.highlight { transform: scale(1.08); box-shadow: 0 0 32px rgba(106,45,110,0.35); border: 3px solid #6a2d6e; background: #fff; position: relative; z-index: 1; }
+        footer { margin-top: 50px; 
+            padding: 20px; 
+            background-color: #bd42fa; 
+            border-top: 1px solid #ddd; 
+            color: #fff; 
+            text-align: center; 
+        }
+    </style>
+
+    <script>
+        const sections = Array.from(document.querySelectorAll('section'));
+        const note = document.getElementById('spotlight-note');
+
+        function spotlightBerry() {
+            const randomIndex = Math.floor(Math.random() * sections.length);
+            sections.forEach((section, index) => {
+                section.classList.toggle('highlight', index === randomIndex);
+            });
+            const berryName = sections[randomIndex].querySelector('h2').textContent;
+            note.textContent = `Spotlight: ${berryName}!`;
+            sections[randomIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        document.addEventListener('DOMContentLoaded', spotlightBerry);
+    </script>
+</body>
+</html>
